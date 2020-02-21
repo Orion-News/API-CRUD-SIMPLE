@@ -16,6 +16,8 @@ mongoose.connect('mongodb+srv://wanderson:wanderson@hello-3xsolutions-wd6bw.mong
 	useUnifiedTopology: true,
 });
 
-app.listen(3000, ()=>{
-	console.log('server is running in port 3000')
+const port = process.env.PORT || 3030;
+
+app.listen(port, ()=>{
+	console.log(`server is running in port: ${port}`);
 	});

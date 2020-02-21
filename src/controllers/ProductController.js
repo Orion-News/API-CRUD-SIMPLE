@@ -26,14 +26,11 @@ class ProductController {
 	
 	// metodo store para criar um novo produto;
 	async Store(req, res){
-	console.log('req', req.body);
 	
 		const insert = req.body;
 		
 		const product = await Product.create(insert);
 
-		console.log(insert, product)
-		
 		return res.json(product);
 	}
 	
