@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-
+require('../models/Product');
 const Product = mongoose.model('Product');
-
 
 class ProductController {
 
@@ -27,10 +26,13 @@ class ProductController {
 	
 	// metodo store para criar um novo produto;
 	async Store(req, res){
+	console.log('req', req.body);
 	
 		const insert = req.body;
 		
 		const product = await Product.create(insert);
+
+		console.log(insert, product)
 		
 		return res.json(product);
 	}
@@ -48,14 +50,15 @@ class ProductController {
 		
 		return res.json(product);
 	}
+	
 	//metodo destroy deve deletar por id,
-	async Detroy(req, res) {
+	async Destroy(req, res) {
 		
 		const { id } = req.params;
 		
 		await Product.findByIdAndRemove(id);
 		
-		return res.send({ Delete : `Product com id: ${id}, foi Removido!`});
+		return res.send({ 'Delete' : `Product com id: ${id}, foi Removido!`});
 	}
 }
 
